@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Adding</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h2>Product Form</h2>
+		<hr>
+		<p th:text="${msg}" class="text-success"></p>
+
+		<form action="#" th:action="@{/save}" th:object="${products}"
+			method="Post">
+			<table>
+				<tr>
+
+					<td><input type="hidden" th:field="*{pId}" /> <input
+						type="text" th:field="*{productName}" placeholder="Product"
+						class="form-control mb-4 col-20"></td>
+					<td th:if="${#fields.hasErrors('productName')}"
+						th:errors="*{productName}" class="text-danger"></td>
+
+				</tr>
+
+				<tr>
+
+					<td><input type="number" th:field="*{productPrice}"
+						placeholder="Price" class="form-control mb-4 col-20"></td>
+					<td th:if="${#fields.hasErrors('productPrice')}"
+						th:errors="*{productPrice}" class="text-danger"></td>
+
+				</tr>
+				<tr>
+
+					<td><input type="text" th:field="*{productQuantity}"
+						placeholder="Quantity" class="form-control mb-4 col-20"></td>
+					<td th:if="${#fields.hasErrors('productQuantity')}"
+						th:errors="*{productQuantity}" class="text-danger"></td>
+
+				</tr>
+				<tr>
+
+					<td>
+						<button type="submit" class="btn btn-info ">SAVEDETAILS</button> <a
+						href="/" class="btn btn-danger">Reset</a>
+					</td>
+
+				</tr>
+
+
+			</table>
+		</form>
+		<hr />
+		<a th:href="@{/retrieval}" class="btn btn-primary">View Products</a>
+
+	</div>
+</body>
+</html>
